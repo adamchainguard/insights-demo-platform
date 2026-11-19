@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argo-rollouts
+  namespace: argocd
+spec:
+  selector:
+    matchLabels:
+      app: argo-rollouts
+  template:
+    metadata:
+      labels:
+        app: argo-rollouts
+    spec:
+      containers:
+        - name: argo-rollouts
+          image: quay.io/argoproj/argo-rollouts:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workflow-controller
+  namespace: argocd
+spec:
+  selector:
+    matchLabels:
+      app: workflow-controller
+  template:
+    metadata:
+      labels:
+        app: workflow-controller
+    spec:
+      containers:
+        - name: workflow-controller
+          image: quay.io/argoproj/workflow-controller:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocli
+  namespace: argocd
+spec:
+  selector:
+    matchLabels:
+      app: argocli
+  template:
+    metadata:
+      labels:
+        app: argocli
+    spec:
+      containers:
+        - name: argocli
+          image: quay.io/argoproj/argocli:latest

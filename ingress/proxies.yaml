@@ -1,0 +1,143 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traefik
+  namespace: ingress
+spec:
+  selector:
+    matchLabels:
+      app: traefik
+  template:
+    metadata:
+      labels:
+        app: traefik
+    spec:
+      containers:
+        - name: traefik
+          image: traefik:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: haproxy
+  namespace: ingress
+spec:
+  selector:
+    matchLabels:
+      app: haproxy
+  template:
+    metadata:
+      labels:
+        app: haproxy
+    spec:
+      containers:
+        - name: haproxy
+          image: bitnami/haproxy:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proxyv2
+  namespace: ingress
+spec:
+  selector:
+    matchLabels:
+      app: proxyv2
+  template:
+    metadata:
+      labels:
+        app: proxyv2
+    spec:
+      containers:
+        - name: proxyv2
+          image: istio/proxyv2:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proxyv2-2
+  namespace: ingress
+spec:
+  selector:
+    matchLabels:
+      app: proxyv2-2
+  template:
+    metadata:
+      labels:
+        app: proxyv2-2
+    spec:
+      containers:
+        - name: proxyv2-2
+          image: docker.io/istio/proxyv2:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pilot
+  namespace: ingress
+spec:
+  selector:
+    matchLabels:
+      app: pilot
+  template:
+    metadata:
+      labels:
+        app: pilot
+    spec:
+      containers:
+        - name: pilot
+          image: istio/pilot:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns
+  namespace: ingress
+spec:
+  selector:
+    matchLabels:
+      app: external-dns
+  template:
+    metadata:
+      labels:
+        app: external-dns
+    spec:
+      containers:
+        - name: external-dns
+          image: registry.k8s.io/external-dns/external-dns:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns-2
+  namespace: ingress
+spec:
+  selector:
+    matchLabels:
+      app: external-dns-2
+  template:
+    metadata:
+      labels:
+        app: external-dns-2
+    spec:
+      containers:
+        - name: external-dns-2
+          image: bitnami/external-dns:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tailscale
+  namespace: ingress
+spec:
+  selector:
+    matchLabels:
+      app: tailscale
+  template:
+    metadata:
+      labels:
+        app: tailscale
+    spec:
+      containers:
+        - name: tailscale
+          image: tailscale/tailscale:latest

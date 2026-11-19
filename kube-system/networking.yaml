@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: node
+  template:
+    metadata:
+      labels:
+        app: node
+    spec:
+      containers:
+        - name: node
+          image: quay.io/calico/node:latest
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-2
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: node-2
+  template:
+    metadata:
+      labels:
+        app: node-2
+    spec:
+      containers:
+        - name: node-2
+          image: calico/node:latest
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cilium
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: cilium
+  template:
+    metadata:
+      labels:
+        app: cilium
+    spec:
+      containers:
+        - name: cilium
+          image: quay.io/cilium/cilium:latest
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: controller
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: controller
+  template:
+    metadata:
+      labels:
+        app: controller
+    spec:
+      containers:
+        - name: controller
+          image: quay.io/metallb/controller:latest
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: speaker
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: speaker
+  template:
+    metadata:
+      labels:
+        app: speaker
+    spec:
+      containers:
+        - name: speaker
+          image: quay.io/metallb/speaker:latest

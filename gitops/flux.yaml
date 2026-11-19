@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: source-controller
+  namespace: flux-system
+spec:
+  selector:
+    matchLabels:
+      app: source-controller
+  template:
+    metadata:
+      labels:
+        app: source-controller
+    spec:
+      containers:
+        - name: source-controller
+          image: ghcr.io/fluxcd/source-controller:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kustomize-controller
+  namespace: flux-system
+spec:
+  selector:
+    matchLabels:
+      app: kustomize-controller
+  template:
+    metadata:
+      labels:
+        app: kustomize-controller
+    spec:
+      containers:
+        - name: kustomize-controller
+          image: ghcr.io/fluxcd/kustomize-controller:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helm-controller
+  namespace: flux-system
+spec:
+  selector:
+    matchLabels:
+      app: helm-controller
+  template:
+    metadata:
+      labels:
+        app: helm-controller
+    spec:
+      containers:
+        - name: helm-controller
+          image: ghcr.io/fluxcd/helm-controller:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-controller
+  namespace: flux-system
+spec:
+  selector:
+    matchLabels:
+      app: notification-controller
+  template:
+    metadata:
+      labels:
+        app: notification-controller
+    spec:
+      containers:
+        - name: notification-controller
+          image: ghcr.io/fluxcd/notification-controller:latest

@@ -1,0 +1,29 @@
+# Images used by shared CI job templates.
+crane:
+  image: gcr.io/go-containerregistry/crane:latest
+cosign:
+  image: ghcr.io/sigstore/cosign/cosign:latest
+terraform:
+  image: hashicorp/terraform:latest
+packer:
+  image: hashicorp/packer:latest
+helm:
+  image: alpine/helm:latest
+cloudSdk:
+  image: google/cloud-sdk:latest
+azureCli:
+  image: mcr.microsoft.com/azure-cli:latest
+git:
+  image: bitnami/git:latest
+core:
+  image: pandoc/core:latest
+eclipseTemurin:
+  image: eclipse-temurin:17
+ruby:
+  image: ruby:latest
+node:
+  image: node:22
+python:
+  image: python:3.13
+golang:
+  image: golang:latest

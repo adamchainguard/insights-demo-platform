@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opa
+  namespace: policy
+spec:
+  selector:
+    matchLabels:
+      app: opa
+  template:
+    metadata:
+      labels:
+        app: opa
+    spec:
+      containers:
+        - name: opa
+          image: openpolicyagent/opa:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kyverno
+  namespace: policy
+spec:
+  selector:
+    matchLabels:
+      app: kyverno
+  template:
+    metadata:
+      labels:
+        app: kyverno
+    spec:
+      containers:
+        - name: kyverno
+          image: ghcr.io/kyverno/kyverno:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: falco
+  namespace: policy
+spec:
+  selector:
+    matchLabels:
+      app: falco
+  template:
+    metadata:
+      labels:
+        app: falco
+    spec:
+      containers:
+        - name: falco
+          image: falcosecurity/falco:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trivy
+  namespace: policy
+spec:
+  selector:
+    matchLabels:
+      app: trivy
+  template:
+    metadata:
+      labels:
+        app: trivy
+    spec:
+      containers:
+        - name: trivy
+          image: aquasec/trivy:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trivy-2
+  namespace: policy
+spec:
+  selector:
+    matchLabels:
+      app: trivy-2
+  template:
+    metadata:
+      labels:
+        app: trivy-2
+    spec:
+      containers:
+        - name: trivy-2
+          image: ghcr.io/aquasecurity/trivy:latest

@@ -1,0 +1,341 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+        - name: prometheus
+          image: prom/prometheus:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-2
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: prometheus-2
+  template:
+    metadata:
+      labels:
+        app: prometheus-2
+    spec:
+      containers:
+        - name: prometheus-2
+          image: quay.io/prometheus/prometheus:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-3
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: prometheus-3
+  template:
+    metadata:
+      labels:
+        app: prometheus-3
+    spec:
+      containers:
+        - name: prometheus-3
+          image: bitnami/prometheus:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alertmanager
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: alertmanager
+  template:
+    metadata:
+      labels:
+        app: alertmanager
+    spec:
+      containers:
+        - name: alertmanager
+          image: prom/alertmanager:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alertmanager-2
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: alertmanager-2
+  template:
+    metadata:
+      labels:
+        app: alertmanager-2
+    spec:
+      containers:
+        - name: alertmanager-2
+          image: quay.io/prometheus/alertmanager:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-exporter
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: node-exporter
+  template:
+    metadata:
+      labels:
+        app: node-exporter
+    spec:
+      containers:
+        - name: node-exporter
+          image: prom/node-exporter:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-exporter-2
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: node-exporter-2
+  template:
+    metadata:
+      labels:
+        app: node-exporter-2
+    spec:
+      containers:
+        - name: node-exporter-2
+          image: quay.io/prometheus/node-exporter:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blackbox-exporter
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: blackbox-exporter
+  template:
+    metadata:
+      labels:
+        app: blackbox-exporter
+    spec:
+      containers:
+        - name: blackbox-exporter
+          image: prom/blackbox-exporter:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pushgateway
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: pushgateway
+  template:
+    metadata:
+      labels:
+        app: pushgateway
+    spec:
+      containers:
+        - name: pushgateway
+          image: prom/pushgateway:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: statsd-exporter
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: statsd-exporter
+  template:
+    metadata:
+      labels:
+        app: statsd-exporter
+    spec:
+      containers:
+        - name: statsd-exporter
+          image: prom/statsd-exporter:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysqld-exporter
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: mysqld-exporter
+  template:
+    metadata:
+      labels:
+        app: mysqld-exporter
+    spec:
+      containers:
+        - name: mysqld-exporter
+          image: prom/mysqld-exporter:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-exporter
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: redis-exporter
+  template:
+    metadata:
+      labels:
+        app: redis-exporter
+    spec:
+      containers:
+        - name: redis-exporter
+          image: oliver006/redis_exporter:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-operator
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: prometheus-operator
+  template:
+    metadata:
+      labels:
+        app: prometheus-operator
+    spec:
+      containers:
+        - name: prometheus-operator
+          image: quay.io/prometheus-operator/prometheus-operator:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-state-metrics
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: kube-state-metrics
+  template:
+    metadata:
+      labels:
+        app: kube-state-metrics
+    spec:
+      containers:
+        - name: kube-state-metrics
+          image: registry.k8s.io/kube-state-metrics/kube-state-metrics:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metrics-server
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: metrics-server
+  template:
+    metadata:
+      labels:
+        app: metrics-server
+    spec:
+      containers:
+        - name: metrics-server
+          image: registry.k8s.io/metrics-server/metrics-server:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thanos
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: thanos
+  template:
+    metadata:
+      labels:
+        app: thanos
+    spec:
+      containers:
+        - name: thanos
+          image: quay.io/thanos/thanos:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thanos-2
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: thanos-2
+  template:
+    metadata:
+      labels:
+        app: thanos-2
+    spec:
+      containers:
+        - name: thanos-2
+          image: bitnami/thanos:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: configmap-reload
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: configmap-reload
+  template:
+    metadata:
+      labels:
+        app: configmap-reload
+    spec:
+      containers:
+        - name: configmap-reload
+          image: jimmidyson/configmap-reload:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-sidecar
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: k8s-sidecar
+  template:
+    metadata:
+      labels:
+        app: k8s-sidecar
+    spec:
+      containers:
+        - name: k8s-sidecar
+          image: quay.io/kiwigrid/k8s-sidecar:latest

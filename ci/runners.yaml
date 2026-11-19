@@ -1,0 +1,215 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  namespace: ci
+spec:
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inbound-agent
+  namespace: ci
+spec:
+  selector:
+    matchLabels:
+      app: inbound-agent
+  template:
+    metadata:
+      labels:
+        app: inbound-agent
+    spec:
+      containers:
+        - name: inbound-agent
+          image: jenkins/inbound-agent:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitlab-runner
+  namespace: ci
+spec:
+  selector:
+    matchLabels:
+      app: gitlab-runner
+  template:
+    metadata:
+      labels:
+        app: gitlab-runner
+    spec:
+      containers:
+        - name: gitlab-runner
+          image: gitlab/gitlab-runner:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actions-runner
+  namespace: ci
+spec:
+  selector:
+    matchLabels:
+      app: actions-runner
+  template:
+    metadata:
+      labels:
+        app: actions-runner
+    spec:
+      containers:
+        - name: actions-runner
+          image: ghcr.io/actions/actions-runner:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: renovate
+  namespace: ci
+spec:
+  selector:
+    matchLabels:
+      app: renovate
+  template:
+    metadata:
+      labels:
+        app: renovate
+    spec:
+      containers:
+        - name: renovate
+          image: renovate/renovate:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarqube
+  namespace: ci
+spec:
+  selector:
+    matchLabels:
+      app: sonarqube
+  template:
+    metadata:
+      labels:
+        app: sonarqube
+    spec:
+      containers:
+        - name: sonarqube
+          image: sonarqube:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: harbor-core
+  namespace: ci
+spec:
+  selector:
+    matchLabels:
+      app: harbor-core
+  template:
+    metadata:
+      labels:
+        app: harbor-core
+    spec:
+      containers:
+        - name: harbor-core
+          image: goharbor/harbor-core:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker
+  namespace: ci
+spec:
+  selector:
+    matchLabels:
+      app: docker
+  template:
+    metadata:
+      labels:
+        app: docker
+    spec:
+      containers:
+        - name: docker
+          image: docker:dind
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-2
+  namespace: ci
+spec:
+  selector:
+    matchLabels:
+      app: docker-2
+  template:
+    metadata:
+      labels:
+        app: docker-2
+    spec:
+      containers:
+        - name: docker-2
+          image: docker:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buildkit
+  namespace: ci
+spec:
+  selector:
+    matchLabels:
+      app: buildkit
+  template:
+    metadata:
+      labels:
+        app: buildkit
+    spec:
+      containers:
+        - name: buildkit
+          image: moby/buildkit:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: executor
+  namespace: ci
+spec:
+  selector:
+    matchLabels:
+      app: executor
+  template:
+    metadata:
+      labels:
+        app: executor
+    spec:
+      containers:
+        - name: executor
+          image: gcr.io/kaniko-project/executor:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stable
+  namespace: ci
+spec:
+  selector:
+    matchLabels:
+      app: stable
+  template:
+    metadata:
+      labels:
+        app: stable
+    spec:
+      containers:
+        - name: stable
+          image: quay.io/buildah/stable:latest

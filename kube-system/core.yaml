@@ -1,0 +1,179 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coredns
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: coredns
+  template:
+    metadata:
+      labels:
+        app: coredns
+    spec:
+      containers:
+        - name: coredns
+          image: registry.k8s.io/coredns/coredns:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-proxy
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: kube-proxy
+  template:
+    metadata:
+      labels:
+        app: kube-proxy
+    spec:
+      containers:
+        - name: kube-proxy
+          image: registry.k8s.io/kube-proxy:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pause
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: pause
+  template:
+    metadata:
+      labels:
+        app: pause
+    spec:
+      containers:
+        - name: pause
+          image: registry.k8s.io/pause:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: etcd
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: etcd
+  template:
+    metadata:
+      labels:
+        app: etcd
+    spec:
+      containers:
+        - name: etcd
+          image: registry.k8s.io/etcd:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: etcd-2
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: etcd-2
+  template:
+    metadata:
+      labels:
+        app: etcd-2
+    spec:
+      containers:
+        - name: etcd-2
+          image: quay.io/coreos/etcd:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: etcd-3
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: etcd-3
+  template:
+    metadata:
+      labels:
+        app: etcd-3
+    spec:
+      containers:
+        - name: etcd-3
+          image: bitnami/etcd:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cluster-autoscaler
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: cluster-autoscaler
+  template:
+    metadata:
+      labels:
+        app: cluster-autoscaler
+    spec:
+      containers:
+        - name: cluster-autoscaler
+          image: registry.k8s.io/autoscaling/cluster-autoscaler:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: controller
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: controller
+  template:
+    metadata:
+      labels:
+        app: controller
+    spec:
+      containers:
+        - name: controller
+          image: public.ecr.aws/karpenter/controller:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keda
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: keda
+  template:
+    metadata:
+      labels:
+        app: keda
+    spec:
+      containers:
+        - name: keda
+          image: ghcr.io/kedacore/keda:latest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: velero
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: velero
+  template:
+    metadata:
+      labels:
+        app: velero
+    spec:
+      containers:
+        - name: velero
+          image: velero/velero:latest

@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cert-manager-controller
+  namespace: cert-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cert-manager-controller
+  template:
+    metadata:
+      labels:
+        app: cert-manager-controller
+    spec:
+      containers:
+        - name: cert-manager-controller
+          image: quay.io/jetstack/cert-manager-controller:latest

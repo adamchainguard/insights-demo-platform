@@ -1,0 +1,18 @@
+# Values for the shared data-services umbrella chart.
+postgresql:
+  image: bitnami/postgresql:latest
+redis:
+  image: bitnami/redis:latest
+mariadb:
+  image: mariadb:latest
+mysql:
+  image: mysql:latest
+pgbouncer:
+  image: bitnami/pgbouncer:latest
+elasticsearch:
+  image: docker.elastic.co/elasticsearch/elasticsearch:latest
+# Internal images with no public equivalent.
+ledgerSync:
+  image: ghcr.io/acme-internal/ledger-sync:2.4.1
+auditForwarder:
+  image: registry.acme.example/platform/audit-forwarder:1.9.0

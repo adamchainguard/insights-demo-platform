@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-config-reloader
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-config-reloader
+  template:
+    metadata:
+      labels:
+        app: prometheus-config-reloader
+    spec:
+      containers:
+        - name: prometheus-config-reloader
+          image: quay.io/prometheus-operator/prometheus-config-reloader:latest

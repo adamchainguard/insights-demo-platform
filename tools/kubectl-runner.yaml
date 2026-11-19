@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubectl-runner
+  namespace: platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubectl-runner
+  template:
+    metadata:
+      labels:
+        app: kubectl-runner
+    spec:
+      containers:
+        - name: kubectl-runner
+          image: cgr.dev/0-cve.com/kubectl:latest
